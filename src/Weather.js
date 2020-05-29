@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 import Forecast from "./Forecast";
+import DisplayDate from "./DisplayDate";
 
 export default function Weather(props) {
   const [weatherInfo, setWeatherInfo] = useState({ ready: false });
@@ -10,6 +11,7 @@ export default function Weather(props) {
     setWeatherInfo({
       ready: true,
       city: response.data.name,
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       temp: Math.round(response.data.main.temp),
@@ -25,7 +27,9 @@ export default function Weather(props) {
         <div className="row">
           <div className="col">
             <ul className="dateDescription">
-              <li>Wednesday, 15:00</li>
+              <li>
+                <DisplayDate date={weatherInfo.date} />
+              </li>
               <li className="text-capitalize">{weatherInfo.description}</li>
             </ul>
           </div>
