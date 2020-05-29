@@ -29,7 +29,7 @@ export default function Search() {
           <button className="fahrenheit-btn">ºF</button>
         </div>
       </div>
-      <Weather />
+      <Weather defaultCity="Porto" />
     </div>
   );
 }
