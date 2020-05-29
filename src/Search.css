@@ -1,0 +1,48 @@
+.Search .icon {
+  color: #636363;
+}
+
+.Search .search-box,
+.icons,
+.celsius-btn,
+.fahrenheit-btn {
+  margin-top: 10px;
+  padding: 6px;
+  border: 0.7px solid #636363;
+}
+
+.Search .search-box,
+.icons {
+  border-radius: 5px;
+  margin-right: 3px;
+}
+
+.Search .search-box {
+  width: 300px;
+  margin-left: 10px;
+}
+
+.Search .icons,
+.celsius-btn,
+.fahrenheit-btn {
+  background: none;
+  width: 40px;
+}
+
+.Search .icons:hover {
+  background: #f2f2f2;
+}
+
+.Search .celsius-btn,
+.fahrenheit-btn {
+  border-radius: 10px;
+}
+
+.Search .celsius-btn {
+  margin-left: 24px;
+  background: #f7e4df;
+}
+
+.Search .fahrenheit-btn {
+  margin-left: 3px;
+}

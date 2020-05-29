@@ -1,3 +1,27 @@
 .App {
-  text-align: center;
+  font-family: "Titillium Web", sans-serif;
+  color: #636363;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0;
+}
+
+.App .box {
+  border: 0.7px solid #636363;
+  border-radius: 6px;
+  background-image: url("./media/background.png");
+  background-size: 150px;
+  background-position: 100px 160px;
+  background-repeat: no-repeat;
+  padding: 10px 10px 15px;
+  margin-bottom: 8px;
+}
+
+.App small {
+  font-size: 11px;
+}
+
+.App a {
+  color: inherit;
+  text-decoration: underline;
 }
