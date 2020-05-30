@@ -8,6 +8,7 @@ import Weather from "./Weather";
 
 export default function Search(props) {
   const [weatherInfo, setWeatherInfo] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function displayWeather(response) {
     setWeatherInfo({
@@ -22,16 +23,31 @@ export default function Search(props) {
     });
   }
 
+  function searchCity() {
+    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
+    axios.get(apiUrl).then(displayWeather);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    searchCity();
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+
   if (weatherInfo.ready) {
     return (
       <div className="Search">
         <div className="row">
           <div className="col-9">
-            <form>
+            <form onSubmit={handleSubmit}>
               <input
                 type="search"
                 placeholder="Type a city"
                 className="search-box"
+                onChange={updateCity}
               />
               <button type="submit" className="icons">
                 <FontAwesomeIcon icon={faSearch} />
@@ -50,9 +66,7 @@ export default function Search(props) {
       </div>
     );
   } else {
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
-    axios.get(apiUrl).then(displayWeather);
-
+    searchCity();
     return "Loading";
   }
 }
