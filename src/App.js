@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <div className="box">
-          <Search />
+          <Search defaultCity="Porto" />
         </div>
         <small>
           <a
