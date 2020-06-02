@@ -1,7 +1,8 @@
 import React from "react";
 import "./Weather.css";
-import Forecast from "./Forecast";
 import DisplayDate from "./DisplayDate";
+import Temperature from "./Temperature";
+import Forecast from "./Forecast";
 
 export default function Weather(props) {
   return (
