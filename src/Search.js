@@ -4,7 +4,9 @@ import "./Search.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import Loader from "react-loader-spinner";
 import Weather from "./Weather";
+import UnitButtons from "./UnitButtons";
 
 export default function Search(props) {
   const [weatherInfo, setWeatherInfo] = useState({ ready: false });
@@ -58,8 +60,7 @@ export default function Search(props) {
             </form>
           </div>
           <div className="col-3">
-            <button className="celsius-btn">ºC</button>
-            <button className="fahrenheit-btn">ºF</button>
+            <UnitButtons />
           </div>
         </div>
         <Weather info={weatherInfo} />
@@ -67,6 +68,17 @@ export default function Search(props) {
     );
   } else {
     searchCity();
-    return "Loading";
+    return (
+      <div>
+        <h1>Weather app is loading</h1>
+        <Loader
+          type="ThreeDots"
+          color="#636363"
+          height={100}
+          width={100}
+          timeout={10000} //3 secs
+        />
+      </div>
+    );
   }
 }

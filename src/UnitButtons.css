@@ -1,0 +1,18 @@
+.UnitButtons .celsius-btn,
+.fahrenheit-btn {
+  margin-top: 10px;
+  padding: 6px;
+  border: 0.7px solid #636363;
+  background: none;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.UnitButtons .celsius-btn {
+  margin-left: 24px;
+  background: #f7e4df;
+}
+
+.UnitButtons .fahrenheit-btn {
+  margin-left: 3px;
+}
