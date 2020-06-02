@@ -6,6 +6,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
 import Weather from "./Weather";
+import Forecast from "./Forecast";
 
 export default function Search(props) {
   const [weatherInfo, setWeatherInfo] = useState({ ready: false });
@@ -78,14 +79,15 @@ export default function Search(props) {
             </button>
           </div>
         </div>
-        <Weather info={weatherInfo} conversion={unit} />
+        <Weather info={weatherInfo} unit={unit} />
+        <Forecast city={city} unit={unit} />
       </div>
     );
   } else {
     searchCity();
     return (
       <div className="error">
-        <div className="error-message">Weather app is loading</div>
+        <div>Weather app is loading</div>
         <Loader
           type="ThreeDots"
           color="#636363"

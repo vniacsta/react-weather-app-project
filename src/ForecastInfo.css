@@ -1,0 +1,27 @@
+.ForecastInfo {
+  text-align: center;
+  margin: 15px 0 5px 0;
+  padding: 0;
+}
+
+.ForecastInfo img {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.ForecastInfo .col {
+  padding: 0;
+  margin: 0;
+}
+
+.ForecastInfo h6 {
+  padding: 0;
+  margin: 0;
+}
+
+.ForecastInfo .forecastUnit {
+  font-size: 11px;
+  position: relative;
+  bottom: 2.5px;
+}

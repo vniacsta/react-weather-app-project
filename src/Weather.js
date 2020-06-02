@@ -2,7 +2,6 @@ import React from "react";
 import "./Weather.css";
 import DisplayDate from "./DisplayDate";
 import Temperature from "./Temperature";
-import Forecast from "./Forecast";
 
 export default function Weather(props) {
   return (
@@ -25,7 +24,7 @@ export default function Weather(props) {
           />
         </div>
         <div className="col">
-          <Temperature temp={props.info.temp} unit={props.conversion} />
+          <Temperature temp={props.info.temp} unit={props.unit} />
         </div>
       </div>
       <div>
@@ -33,14 +32,6 @@ export default function Weather(props) {
           <li>Humidity: {props.info.humidity}%</li>
           <li>Wind: {props.info.wind} km/h</li>
         </ul>
-      </div>
-      <div className="row row-cols-6">
-        <Forecast hour="19:00" icon="01d" minTemp="17" maxTemp="24" />
-        <Forecast hour="22:00" icon="01n" minTemp="16" maxTemp="23" />
-        <Forecast hour="01:00" icon="02n" minTemp="15" maxTemp="26" />
-        <Forecast hour="04:00" icon="02n" minTemp="17" maxTemp="27" />
-        <Forecast hour="07:00" icon="02d" minTemp="19" maxTemp="26" />
-        <Forecast hour="10:00" icon="01d" minTemp="20" maxTemp="27" />
       </div>
     </div>
   );
