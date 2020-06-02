@@ -24,10 +24,7 @@ export default function Weather(props) {
           />
         </div>
         <div className="col">
-          <h2 className="currentTemp">
-            {props.info.temp}
-            <span className="weatherUnit">ºC</span>
-          </h2>
+          <Temperature temp={props.info.temp} />
         </div>
       </div>
       <div>
