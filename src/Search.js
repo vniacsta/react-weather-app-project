@@ -6,11 +6,11 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
 import Weather from "./Weather";
-import UnitButtons from "./UnitButtons";
 
 export default function Search(props) {
   const [weatherInfo, setWeatherInfo] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+  const [unit, setUnit] = useState("celsius");
 
   function displayWeather(response) {
     setWeatherInfo({
@@ -39,6 +39,16 @@ export default function Search(props) {
     setCity(event.target.value);
   }
 
+  function showCelsius(event) {
+    event.preventDefault();
+    setUnit("celsius");
+  }
+
+  function showFahrenheit(event) {
+    event.preventDefault();
+    setUnit("fahrenheit");
+  }
+
   if (weatherInfo.ready) {
     return (
       <div className="Search">
@@ -60,23 +70,28 @@ export default function Search(props) {
             </form>
           </div>
           <div className="col-3">
-            <UnitButtons />
+            <button onClick={showCelsius} className="celsius-btn">
+              ºC
+            </button>
+            <button onClick={showFahrenheit} className="fahrenheit-btn">
+              ºF
+            </button>
           </div>
         </div>
-        <Weather info={weatherInfo} />
+        <Weather info={weatherInfo} conversion={unit} />
       </div>
     );
   } else {
     searchCity();
     return (
-      <div>
-        <h1>Weather app is loading</h1>
+      <div className="error">
+        <div className="error-message">Weather app is loading</div>
         <Loader
           type="ThreeDots"
           color="#636363"
-          height={100}
-          width={100}
-          timeout={10000} //3 secs
+          height={60}
+          width={60}
+          timeout={10000}
         />
       </div>
     );

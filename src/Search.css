@@ -21,3 +21,28 @@
 .Search .icons:hover {
   background: #f2f2f2;
 }
+
+.Search .celsius-btn,
+.fahrenheit-btn {
+  margin-top: 10px;
+  padding: 6px;
+  border: 0.7px solid #636363;
+  background: none;
+  width: 40px;
+  border-radius: 10px;
+}
+
+.Search .celsius-btn {
+  margin-left: 24px;
+  background: #f7e4df;
+}
+
+.Search .fahrenheit-btn {
+  margin-left: 3px;
+}
+
+.error {
+  text-align: center;
+  font-size: 30px;
+  padding-top: 10px;
+}

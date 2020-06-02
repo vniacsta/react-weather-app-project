@@ -1,19 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Temperature(props) {
-  const [unit, setUnit] = useState("celsius");
-
-  function showCelsius(event) {
-    event.preventDefault();
-    setUnit("celsius");
-  }
-
-  function showFahrenheit(event) {
-    event.preventDefault();
-    setUnit("fahrenheit");
-  }
-
-  if (unit === "celsius") {
+  if (props.unit === "celsius") {
     return (
       <h2 className="currentTemp">
         {props.temp}

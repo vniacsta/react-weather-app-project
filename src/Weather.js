@@ -25,7 +25,7 @@ export default function Weather(props) {
           />
         </div>
         <div className="col">
-          <Temperature temp={props.info.temp} />
+          <Temperature temp={props.info.temp} unit={props.conversion} />
         </div>
       </div>
       <div>
