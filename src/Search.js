@@ -12,6 +12,7 @@ export default function Search(props) {
   const [weatherInfo, setWeatherInfo] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   const [unit, setUnit] = useState("celsius");
+  const [forecastLocation, setForecastLocation] = useState(null);
 
   function displayWeather(response) {
     setWeatherInfo({
@@ -50,6 +51,24 @@ export default function Search(props) {
     setUnit("fahrenheit");
   }
 
+  function displayForecast(response) {
+    setForecastLocation(response.data);
+  }
+
+  function displayLocation(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(function (position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
+
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
+      axios.get(apiUrl).then(displayWeather);
+
+      apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
+      axios.get(apiUrl).then(displayForecast);
+    });
+  }
+
   if (weatherInfo.ready) {
     return (
       <div className="Search">
@@ -65,7 +84,7 @@ export default function Search(props) {
               <button type="submit" className="icons">
                 <FontAwesomeIcon icon={faSearch} />
               </button>
-              <button type="button" className="icons">
+              <button type="button" className="icons" onClick={displayLocation}>
                 <FontAwesomeIcon icon={faLocationArrow} />
               </button>
             </form>
@@ -80,7 +99,7 @@ export default function Search(props) {
           </div>
         </div>
         <Weather info={weatherInfo} unit={unit} />
-        <Forecast city={city} unit={unit} />
+        <Forecast city={city} unit={unit} location={forecastLocation} />
       </div>
     );
   } else {
