@@ -17,7 +17,7 @@ export default function ForecastInfo(props) {
         <div className="col">
           <h6>{hours()}</h6>
           <img
-            src={`http://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
+            src={`https://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
             alt="Weather Icon"
             height="75"
           />
@@ -42,7 +42,7 @@ export default function ForecastInfo(props) {
         <div className="col">
           <h6>{hours()}</h6>
           <img
-            src={`http://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
+            src={`https://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
             alt="Weather Icon"
             height="75"
           />
