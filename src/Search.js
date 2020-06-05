@@ -36,9 +36,9 @@ export default function Search(props) {
   }
 
   function searchCity() {
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
     axios.get(apiUrl).then(displayWeather);
-    apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
+    apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
     axios.get(apiUrl).then(displayForecast);
   }
 
