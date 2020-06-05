@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
 import Weather from "./Weather";
 import Forecast from "./Forecast";
 
 export default function Search(props) {
-  const [weatherInfo, setWeatherInfo] = useState({ ready: false });
+  const [weather, setWeather] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   const [unit, setUnit] = useState("celsius");
-  const [forecastLocation, setForecastLocation] = useState(null);
+  const [colorC, setColorC] = useState("#f7e4df");
+  const [colorF, setColorF] = useState("#fff");
+  const [forecast, setForecast] = useState({ ready: false });
 
   function displayWeather(response) {
-    setWeatherInfo({
+    setWeather({
       ready: true,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
@@ -27,9 +28,18 @@ export default function Search(props) {
     });
   }
 
+  function displayForecast(response) {
+    setForecast({
+      ready: true,
+      data: response.data,
+    });
+  }
+
   function searchCity() {
     let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
     axios.get(apiUrl).then(displayWeather);
+    apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
   }
 
   function handleSubmit(event) {
@@ -44,15 +54,15 @@ export default function Search(props) {
   function showCelsius(event) {
     event.preventDefault();
     setUnit("celsius");
+    setColorC({ bgColor: "#f7e4df" });
+    setColorF({ bgColor: "#fff" });
   }
 
   function showFahrenheit(event) {
     event.preventDefault();
     setUnit("fahrenheit");
-  }
-
-  function displayForecast(response) {
-    setForecastLocation(response.data);
+    setColorC({ bgColor: "#fff" });
+    setColorF({ bgColor: "#f7e4df" });
   }
 
   function displayLocation(event) {
@@ -60,16 +70,14 @@ export default function Search(props) {
     navigator.geolocation.getCurrentPosition(function (position) {
       let latitude = position.coords.latitude;
       let longitude = position.coords.longitude;
-
       let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
       axios.get(apiUrl).then(displayWeather);
-
       apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=5ce165099db98eb1a4172c9b8eea4597&units=metric`;
       axios.get(apiUrl).then(displayForecast);
     });
   }
 
-  if (weatherInfo.ready) {
+  if (weather.ready) {
     return (
       <div className="Search">
         <div className="row">
@@ -90,16 +98,24 @@ export default function Search(props) {
             </form>
           </div>
           <div className="col-3">
-            <button onClick={showCelsius} className="celsius-btn">
+            <button
+              className="celsius-btn"
+              onClick={showCelsius}
+              style={{ backgroundColor: colorC.bgColor }}
+            >
               ºC
             </button>
-            <button onClick={showFahrenheit} className="fahrenheit-btn">
+            <button
+              className="fahrenheit-btn"
+              onClick={showFahrenheit}
+              style={{ backgroundColor: colorF.bgColor }}
+            >
               ºF
             </button>
           </div>
         </div>
-        <Weather info={weatherInfo} unit={unit} />
-        <Forecast city={city} unit={unit} location={forecastLocation} />
+        <Weather info={weather} unit={unit} />
+        <Forecast info={forecast.data} unit={unit} />
       </div>
     );
   } else {
