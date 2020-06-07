@@ -41,6 +41,11 @@
   background: none;
 }
 
+.Search .row-cols-6 {
+  margin: 0;
+  padding: 0;
+}
+
 .error {
   text-align: center;
   font-size: 30px;

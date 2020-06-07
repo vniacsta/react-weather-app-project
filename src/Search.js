@@ -77,7 +77,7 @@ export default function Search(props) {
     });
   }
 
-  if (weather.ready) {
+  if (weather.ready && forecast.ready) {
     return (
       <div className="Search">
         <div className="row">
@@ -115,7 +115,14 @@ export default function Search(props) {
           </div>
         </div>
         <Weather info={weather} unit={unit} />
-        <Forecast info={forecast.data} unit={unit} />
+        <div className="row row-cols-6">
+          <Forecast info={forecast.data.list[0]} unit={unit} />
+          <Forecast info={forecast.data.list[1]} unit={unit} />
+          <Forecast info={forecast.data.list[2]} unit={unit} />
+          <Forecast info={forecast.data.list[3]} unit={unit} />
+          <Forecast info={forecast.data.list[4]} unit={unit} />
+          <Forecast info={forecast.data.list[5]} unit={unit} />
+        </div>
       </div>
     );
   } else {
