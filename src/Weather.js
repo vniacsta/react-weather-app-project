@@ -2,6 +2,7 @@ import React from "react";
 import "./Weather.css";
 import DisplayDate from "./DisplayDate";
 import Temperature from "./Temperature";
+import WeatherIcons from "./WeatherIcons";
 
 export default function Weather(props) {
   return (
@@ -16,11 +17,11 @@ export default function Weather(props) {
             <li className="text-capitalize">{props.info.description}</li>
           </ul>
         </div>
-        <div className="col">
-          <img
-            className="weatherIcon"
-            src={`https://openweathermap.org/img/wn/${props.info.icon}@2x.png`}
+        <div className="col weatherIcon">
+          <WeatherIcons
+            icon={props.info.icon}
             alt={props.info.description}
+            height="90"
           />
         </div>
         <div className="col">

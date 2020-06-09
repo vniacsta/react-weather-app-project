@@ -11,7 +11,7 @@ export default function Search(props) {
   const [weather, setWeather] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   const [unit, setUnit] = useState("celsius");
-  const [colorC, setColorC] = useState("#f7e4df");
+  const [colorC, setColorC] = useState("#f8cb7d");
   const [colorF, setColorF] = useState("#fff");
   const [forecast, setForecast] = useState({ ready: false });
 
@@ -54,7 +54,7 @@ export default function Search(props) {
   function showCelsius(event) {
     event.preventDefault();
     setUnit("celsius");
-    setColorC({ bgColor: "#f7e4df" });
+    setColorC({ bgColor: "#f8cb7d" });
     setColorF({ bgColor: "#fff" });
   }
 
@@ -62,7 +62,7 @@ export default function Search(props) {
     event.preventDefault();
     setUnit("fahrenheit");
     setColorC({ bgColor: "#fff" });
-    setColorF({ bgColor: "#f7e4df" });
+    setColorF({ bgColor: "#f8cb7d" });
   }
 
   function displayLocation(event) {

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Forecast.css";
+import WeatherIcons from "./WeatherIcons";
 
 export default function Forecast(props) {
   function hours() {
@@ -16,11 +17,13 @@ export default function Forecast(props) {
       <div className="Forecast">
         <div className="col">
           <h6>{hours()}</h6>
-          <img
-            src={`https://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
-            alt="Weather Icon"
-            height="75"
-          />
+          <div className="forecastIcons text-capitalize">
+            <WeatherIcons
+              icon={props.info.weather[0].icon}
+              alt={props.info.weather[0].description}
+              height="60"
+            />
+          </div>
           <div>
             <strong>
               <span className="maxTemp">
@@ -41,11 +44,13 @@ export default function Forecast(props) {
       <div className="Forecast">
         <div className="col">
           <h6>{hours()}</h6>
-          <img
-            src={`https://openweathermap.org/img/wn/${props.info.weather[0].icon}@2x.png`}
-            alt="Weather Icon"
-            height="75"
-          />
+          <div className="forecastIcons text-capitalize">
+            <WeatherIcons
+              icon={props.info.weather[0].icon}
+              alt={props.info.weather[0].description}
+              height="60"
+            />
+          </div>
           <div>
             <strong>
               <span className="maxTemp">
