@@ -19,7 +19,7 @@ export default function App() {
           </a>
           , by{" "}
           <a
-            href="https://www.linkedin.com/in/vaniarcosta/"
+            href="https://vniacsta.pt/"
             target="_blank"
             rel="noopener noreferrer"
           >
